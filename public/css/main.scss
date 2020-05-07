@@ -1,0 +1,19 @@
+@import "./variables";
+
+body {
+	background: rgb(30, 55, 85);
+	background: radial-gradient(
+		ellipse at top,
+		rgba(30, 55, 85, 1) 0%,
+		rgba(21, 25, 59, 1) 100%
+	);
+	@include flex(center, space-between, column nowrap);
+}
+
+.attribution {
+	font-size: 11px;
+	text-align: center;
+}
+.attribution a {
+	color: hsl(228, 45%, 44%);
+}
