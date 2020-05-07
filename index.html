@@ -15,27 +15,44 @@
 		<script src="public/js/main.js" defer></script>
 	</head>
 	<body>
-		<div>
-			<img src="public/images/logo.svg" alt="rock-scissors-paper" />
-			<div>
-				<h2>
+		<div class="backdrop"></div>
+		<header class="header">
+			<img
+				src="public/images/logo.svg"
+				alt="rock-scissors-paper"
+				class="header__logo"
+			/>
+			<div class="header__score--container">
+				<h2 class="header__score">
 					Score
 				</h2>
-				<div id="score"></div>
+				<div id="score">0</div>
 			</div>
-		</div>
+		</header>
 
-		<main>
-			<img src="public/images/bg-triangle.svg" />
-			<div class="entity"><img src="public/images/icon-paper.svg" /></div>
-			<div class="entity"><img src="public/images/icon-scissors.svg" /></div>
-			<div class="entity"><img src="public/images/icon-rock.svg" /></div>
+		<main class="main">
+			<img src="public/images/bg-triangle.svg" class="main__bg-image" />
+			<div class="main__entity paper">
+				<img src="public/images/icon-paper.svg" />
+			</div>
+			<div class="main__entity scissors">
+				<img src="public/images/icon-scissors.svg" />
+			</div>
+			<div class="main__entity rock">
+				<img src="public/images/icon-rock.svg" />
+			</div>
 		</main>
 
-		<div>
+		<div class="rules">
 			Rules
 		</div>
-		<div></div>
+		<div class="modal">
+			<div>
+				<span>Rules</span>
+				<img src="public/images/icon-close.svg" class="close-modal" />
+			</div>
+			<img src="public/images/image-rules.svg" />
+		</div>
 		<!-- <div>
 			<h2>
 				You Picked
