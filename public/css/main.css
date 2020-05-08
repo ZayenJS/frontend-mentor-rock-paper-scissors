@@ -148,6 +148,7 @@ body {
 
 .main__entity img {
   position: absolute;
+  pointer-events: none;
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
