@@ -1,9 +1,10 @@
 @import "./variables";
 
 body {
+	@include flex(center, space-between, column nowrap);
 	background: rgb(30, 55, 85);
 	background: radial-gradient(ellipse at top, #1f3756 0%, #141539 100%);
-	@include flex(center, space-between, column nowrap);
+	font-family: "Barlow Semi Condensed", sans-serif;
 }
 
 .backdrop {
@@ -217,6 +218,7 @@ body {
 	&--player {
 		@include flex(center, space-between, column nowrap);
 		font-size: 1.5rem;
+		font-weight: 600;
 		pointer-events: none;
 
 		p {
@@ -250,6 +252,7 @@ body {
 	&--house {
 		@include flex(center, space-between, column nowrap);
 		font-size: 1.5rem;
+		font-weight: 600;
 
 		p {
 			margin-bottom: 4rem;

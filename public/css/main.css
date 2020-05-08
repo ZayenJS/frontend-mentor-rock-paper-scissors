@@ -1,6 +1,4 @@
 body {
-  background: #1e3755;
-  background: radial-gradient(ellipse at top, #1f3756 0%, #141539 100%);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -14,6 +12,9 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-flow: column nowrap;
           flex-flow: column nowrap;
+  background: #1e3755;
+  background: radial-gradient(ellipse at top, #1f3756 0%, #141539 100%);
+  font-family: "Barlow Semi Condensed", sans-serif;
 }
 
 .backdrop {
@@ -316,6 +317,7 @@ body {
       -ms-flex-flow: column nowrap;
           flex-flow: column nowrap;
   font-size: 1.5rem;
+  font-weight: 600;
   pointer-events: none;
 }
 
@@ -362,6 +364,7 @@ body {
       -ms-flex-flow: column nowrap;
           flex-flow: column nowrap;
   font-size: 1.5rem;
+  font-weight: 600;
 }
 
 .result--house p {
