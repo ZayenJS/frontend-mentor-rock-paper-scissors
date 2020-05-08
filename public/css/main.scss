@@ -247,7 +247,9 @@ body {
 
 	&:hover,
 	&:active {
-		transform: scale(1.05);
+		@include md {
+			transform: scale(1.05);
+		}
 	}
 }
 
@@ -447,9 +449,12 @@ body {
 			opacity: 0;
 			pointer-events: none;
 			order: 3;
+			position: relative;
+			top: -4rem;
 
 			@include md {
 				order: 2;
+				position: static;
 			}
 		}
 	}
