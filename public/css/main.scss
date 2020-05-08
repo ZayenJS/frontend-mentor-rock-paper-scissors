@@ -40,25 +40,32 @@ body {
 			min-width: 9rem;
 			border-radius: 5px;
 			background-color: #fafafa;
+			margin-left: 1rem;
 			font-size: 1.1rem;
 		}
 	}
 }
 
+.scores {
+	@include flex(center, center, row wrap);
+}
+
 #score {
-	font-weight: bold;
-	font-size: 3.5em;
-	color: #5b596e;
+	&--player,
+	&--house {
+		font-weight: bold;
+		font-size: 3.5em;
+		color: #5b596e;
+	}
 }
 
 .main {
 	position: absolute;
-	max-width: 800px;
+	min-width: 800px;
 	min-height: 20rem;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -25%);
-	width: 80%;
 
 	&__bg-image {
 		display: block;
@@ -210,7 +217,6 @@ body {
 	&--player {
 		@include flex(center, space-between, column nowrap);
 		font-size: 1.5rem;
-		// opacity: 0;
 		pointer-events: none;
 
 		p {
@@ -297,6 +303,7 @@ body {
 	padding: 1rem 2rem;
 	text-transform: uppercase;
 	font-size: 1rem;
+	font-weight: bold;
 	transition: all 200ms ease-in-out;
 
 	&:hover,
@@ -306,18 +313,36 @@ body {
 	}
 }
 
-.win {
-	&--player {
-	}
+//todo winning circle
+//todo mobile version
+// .win {
+// 	&--player {
+// 	}
 
-	&--house {
-	}
+// 	&--house {
+// 	}
+// }
+
+.waiting {
+	position: absolute;
+	bottom: 1rem;
+	right: 3rem;
+	min-width: 12rem;
+	min-height: 12rem;
+	background-color: #17223e;
+	border-radius: 50%;
 }
 
 .attribution {
-	font-size: 11px;
+	font-size: 1.1rem;
 	text-align: center;
+	margin-bottom: 1rem;
 }
 .attribution a {
 	color: hsl(228, 45%, 44%);
+	transition: all 200ms ease-in-out;
+
+	&:hover {
+		color: lighten(hsl(228, 45%, 44%), 25);
+	}
 }

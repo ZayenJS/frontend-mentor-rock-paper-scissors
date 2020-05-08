@@ -77,10 +77,27 @@ body {
   min-width: 9rem;
   border-radius: 5px;
   background-color: #fafafa;
+  margin-left: 1rem;
   font-size: 1.1rem;
 }
 
-#score {
+.scores {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+}
+
+#score--player, #score--house {
   font-weight: bold;
   font-size: 3.5em;
   color: #5b596e;
@@ -88,13 +105,12 @@ body {
 
 .main {
   position: absolute;
-  max-width: 800px;
+  min-width: 800px;
   min-height: 20rem;
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -25%);
           transform: translate(-50%, -25%);
-  width: 80%;
 }
 
 .main__bg-image {
@@ -411,6 +427,7 @@ body {
   padding: 1rem 2rem;
   text-transform: uppercase;
   font-size: 1rem;
+  font-weight: bold;
   -webkit-transition: all 200ms ease-in-out;
   transition: all 200ms ease-in-out;
 }
@@ -421,12 +438,29 @@ body {
           transform: scale(1.025);
 }
 
+.waiting {
+  position: absolute;
+  bottom: 1rem;
+  right: 3rem;
+  min-width: 12rem;
+  min-height: 12rem;
+  background-color: #17223e;
+  border-radius: 50%;
+}
+
 .attribution {
-  font-size: 11px;
+  font-size: 1.1rem;
   text-align: center;
+  margin-bottom: 1rem;
 }
 
 .attribution a {
   color: #3e52a3;
+  -webkit-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
+}
+
+.attribution a:hover {
+  color: #8c9bd4;
 }
 /*# sourceMappingURL=main.css.map */

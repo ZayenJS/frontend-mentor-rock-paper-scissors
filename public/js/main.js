@@ -5,7 +5,8 @@ const app = {
 	rulesModal: document.querySelector(".modal"),
 	closeModalBtnElem: document.querySelector(".close-modal"),
 	board: document.querySelector("#board"),
-	scoreElem: document.querySelector("#score"),
+	playerScoreElem: document.querySelector("#score--player"),
+	houseScoreElem: document.querySelector("#score--house"),
 
 	// DOM elems representing game icons
 	rock: document.querySelector(".rock"),
@@ -24,7 +25,8 @@ const app = {
 		HOUSE: "HOUSE",
 		houseChoice: null,
 		// stores the score
-		score: 0,
+		playerScore: 0,
+		houseScore: 0,
 	},
 
 	// Method fired on dom load
@@ -71,13 +73,13 @@ const app = {
 			case player === this.game.ROCK && house === this.game.PAPER:
 			case player === this.game.SCISSORS && house === this.game.ROCK:
 				winner = this.game.HOUSE;
-				this.updateScore(false);
+				this.updateScore(this.game.HOUSE);
 				break;
 			case player === this.game.PAPER && house === this.game.ROCK:
 			case player === this.game.ROCK && house === this.game.SCISSORS:
 			case player === this.game.SCISSORS && house === this.game.PAPER:
 				winner = this.game.PLAYER;
-				this.updateScore(true);
+				this.updateScore(this.game.PLAYER);
 				break;
 			default:
 				winner = null;
@@ -87,18 +89,17 @@ const app = {
 		return winner;
 	},
 
-	updateScore(result) {
-		if (result) {
-			this.game.score++;
-		} else if (!result) {
-			if (this.game.score > 0) {
-				this.game.score--;
-			}
+	updateScore(entity) {
+		if (entity === this.game.PLAYER) {
+			this.game.playerScore++;
+		} else if (entity === this.game.HOUSE) {
+			this.game.houseScore++;
 		}
 	},
 
 	updateUIScore() {
-		this.scoreElem.textContent = this.game.score;
+		this.playerScoreElem.textContent = this.game.playerScore;
+		this.houseScoreElem.textContent = this.game.houseScore;
 	},
 
 	// stores the player choice in the property game.playerChoice
@@ -160,9 +161,18 @@ const app = {
 			value: houseChoice,
 		});
 
+		const houseWaitingElem = this.createElement("div", {
+			className: "waiting",
+		});
+
 		const result = this.createElement("div", { className: "result" });
 
-		result.append(playerChoiceElem, winnerElem, houseChoiceElem);
+		result.append(
+			playerChoiceElem,
+			winnerElem,
+			houseWaitingElem,
+			houseChoiceElem,
+		);
 
 		const elemsToShow = [
 			houseChoiceElem.querySelector(".main__entity"),
@@ -179,6 +189,7 @@ const app = {
 				}, 1000 * i + 1000);
 			}
 		}
+
 		this.board.append(result);
 	},
 
