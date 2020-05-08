@@ -53,9 +53,17 @@ body {
 
 .main {
 	position: absolute;
+	max-width: 800px;
+	min-height: 20rem;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -25%);
+	width: 80%;
+
+	&__bg-image {
+		display: block;
+		margin: auto;
+	}
 
 	&__entity {
 		position: absolute;
@@ -101,8 +109,8 @@ body {
 				min-height: 11rem;
 				min-width: 11rem;
 				border: 20px solid #ec9f18;
-				border-radius: 50%;
 				box-shadow: 0px 9px #c66d1a, inset 0px 8px #bcbed3;
+				border-radius: 50%;
 				background-color: transparent;
 			}
 		}
@@ -119,18 +127,18 @@ body {
 }
 
 .paper {
-	top: -3rem;
-	left: -3rem;
+	top: -4rem;
+	left: 11rem;
 }
 
 .scissors {
-	top: -3rem;
-	right: -3rem;
+	top: -4rem;
+	right: 11rem;
 }
 
 .rock {
-	bottom: -3rem;
-	left: 4rem;
+	bottom: -2rem;
+	left: 19rem;
 }
 
 .rules {
@@ -194,6 +202,116 @@ body {
 .show--modal {
 	@extend .show;
 	transform: translate(-50%, -50%);
+}
+
+.result {
+	@include flex(center, space-around, row wrap);
+
+	&--player {
+		@include flex(center, space-between, column nowrap);
+		font-size: 1.5rem;
+		// opacity: 0;
+		pointer-events: none;
+
+		p {
+			margin-bottom: 4rem;
+			text-transform: uppercase;
+			color: #fff;
+		}
+
+		.main__entity {
+			position: relative;
+			top: initial;
+			left: initial;
+			right: initial;
+			bottom: initial;
+			min-width: 15rem;
+			min-height: 15rem;
+
+			img {
+				width: 6rem;
+			}
+
+			&::before {
+				min-width: 15rem;
+				min-height: 15rem;
+				border: 25px solid #ec9f18;
+				box-shadow: 0px 9px #c66d1a, inset 0px 8px #bcbed3;
+			}
+		}
+	}
+
+	&--house {
+		@include flex(center, space-between, column nowrap);
+		font-size: 1.5rem;
+
+		p {
+			margin-bottom: 4rem;
+			text-transform: uppercase;
+			color: #fff;
+		}
+
+		.main__entity {
+			opacity: 0;
+			pointer-events: none !important;
+			position: relative;
+			top: initial;
+			left: initial;
+			right: initial;
+			bottom: initial;
+			min-width: 15rem;
+			min-height: 15rem;
+
+			img {
+				width: 6rem;
+			}
+
+			&::before {
+				min-width: 15rem;
+				min-height: 15rem;
+				border: 25px solid #de2f50;
+				box-shadow: 0px 9px #9f1830, inset 0px 8px #bcbed3;
+			}
+		}
+	}
+
+	&--text {
+		font-weight: bold;
+		text-transform: uppercase;
+		font-size: 2.5rem;
+		margin: 1rem 0;
+		color: #fff;
+
+		&__container {
+			@include flex(center, center, column nowrap);
+			opacity: 0;
+			pointer-events: none;
+		}
+	}
+}
+
+.replay--btn {
+	width: 100%;
+	border: none;
+	border-radius: 5px;
+	padding: 1rem 2rem;
+	text-transform: uppercase;
+	font-size: 1rem;
+	transition: all 200ms ease-in-out;
+
+	&:hover,
+	&:active {
+		color: red;
+		transform: scale(1.025);
+	}
+}
+
+.win {
+	&--player {
+	}
+
+	&--house {
+	}
 }
 
 .attribution {

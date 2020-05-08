@@ -88,10 +88,18 @@ body {
 
 .main {
   position: absolute;
+  max-width: 800px;
+  min-height: 20rem;
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -25%);
           transform: translate(-50%, -25%);
+  width: 80%;
+}
+
+.main__bg-image {
+  display: block;
+  margin: auto;
 }
 
 .main__entity {
@@ -140,9 +148,9 @@ body {
   min-height: 11rem;
   min-width: 11rem;
   border: 20px solid #ec9f18;
-  border-radius: 50%;
   -webkit-box-shadow: 0px 9px #c66d1a, inset 0px 8px #bcbed3;
           box-shadow: 0px 9px #c66d1a, inset 0px 8px #bcbed3;
+  border-radius: 50%;
   background-color: transparent;
 }
 
@@ -156,18 +164,18 @@ body {
 }
 
 .paper {
-  top: -3rem;
-  left: -3rem;
+  top: -4rem;
+  left: 11rem;
 }
 
 .scissors {
-  top: -3rem;
-  right: -3rem;
+  top: -4rem;
+  right: 11rem;
 }
 
 .rock {
-  bottom: -3rem;
-  left: 4rem;
+  bottom: -2rem;
+  left: 19rem;
 }
 
 .rules {
@@ -260,6 +268,157 @@ body {
 .show--modal {
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
+}
+
+.result {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+}
+
+.result--player {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+  font-size: 1.5rem;
+  pointer-events: none;
+}
+
+.result--player p {
+  margin-bottom: 4rem;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.result--player .main__entity {
+  position: relative;
+  top: initial;
+  left: initial;
+  right: initial;
+  bottom: initial;
+  min-width: 15rem;
+  min-height: 15rem;
+}
+
+.result--player .main__entity img {
+  width: 6rem;
+}
+
+.result--player .main__entity::before {
+  min-width: 15rem;
+  min-height: 15rem;
+  border: 25px solid #ec9f18;
+  -webkit-box-shadow: 0px 9px #c66d1a, inset 0px 8px #bcbed3;
+          box-shadow: 0px 9px #c66d1a, inset 0px 8px #bcbed3;
+}
+
+.result--house {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+  font-size: 1.5rem;
+}
+
+.result--house p {
+  margin-bottom: 4rem;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.result--house .main__entity {
+  opacity: 0;
+  pointer-events: none !important;
+  position: relative;
+  top: initial;
+  left: initial;
+  right: initial;
+  bottom: initial;
+  min-width: 15rem;
+  min-height: 15rem;
+}
+
+.result--house .main__entity img {
+  width: 6rem;
+}
+
+.result--house .main__entity::before {
+  min-width: 15rem;
+  min-height: 15rem;
+  border: 25px solid #de2f50;
+  -webkit-box-shadow: 0px 9px #9f1830, inset 0px 8px #bcbed3;
+          box-shadow: 0px 9px #9f1830, inset 0px 8px #bcbed3;
+}
+
+.result--text {
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 2.5rem;
+  margin: 1rem 0;
+  color: #fff;
+}
+
+.result--text__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.replay--btn {
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  padding: 1rem 2rem;
+  text-transform: uppercase;
+  font-size: 1rem;
+  -webkit-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
+}
+
+.replay--btn:hover, .replay--btn:active {
+  color: red;
+  -webkit-transform: scale(1.025);
+          transform: scale(1.025);
 }
 
 .attribution {

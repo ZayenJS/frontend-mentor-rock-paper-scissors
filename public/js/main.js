@@ -95,8 +95,6 @@ const app = {
 				this.game.score--;
 			}
 		}
-
-		this.updateUIScore();
 	},
 
 	updateUIScore() {
@@ -105,7 +103,7 @@ const app = {
 
 	// stores the player choice in the property game.playerChoice
 	playerChoice(e) {
-		return (this.game.playerChoice = e.target.getAttribute("player-choice"));
+		return (this.game.playerChoice = e.target.getAttribute("choice"));
 	},
 
 	// stores the house choice in the property game.houseChoice
@@ -129,31 +127,59 @@ const app = {
 		]);
 		// creates the entities
 		const paper = this.createEntity(this.game.PAPER.toLowerCase());
+		this.addClickListener(paper, this.playHandler.bind(this));
+
 		const scissors = this.createEntity(this.game.SCISSORS.toLowerCase());
+		this.addClickListener(scissors, this.playHandler.bind(this));
+
 		const rock = this.createEntity(this.game.ROCK.toLowerCase());
+		this.addClickListener(rock, this.playHandler.bind(this));
 
 		// appends everything to the board
 		this.board.append(bgImage, paper, scissors, rock);
 	},
 
 	// displays the result on the screen
-	showResults(winner) {
+	showResults(winner, playerChoice, houseChoice) {
 		this.board.textContent = "";
 
 		const playerChoiceElem = this.createResultElement({
 			name: this.game.PLAYER,
 			isWinner: winner !== this.game.PLAYER ? false : true,
+			value: playerChoice,
 		});
+
 		const winnerElem = this.createResultElement({
 			name: "RESULT",
 			value: winner,
 		});
+
 		const houseChoiceElem = this.createResultElement({
 			name: this.game.HOUSE,
 			isWinner: winner !== this.game.HOUSE ? false : true,
+			value: houseChoice,
 		});
 
-		this.board.append(playerChoiceElem, winnerElem, houseChoiceElem);
+		const result = this.createElement("div", { className: "result" });
+
+		result.append(playerChoiceElem, winnerElem, houseChoiceElem);
+
+		const elemsToShow = [
+			houseChoiceElem.querySelector(".main__entity"),
+			winnerElem,
+		];
+
+		for (let i = 0; i < elemsToShow.length; i++) {
+			setTimeout(() => {
+				elemsToShow[i].classList.add("show");
+			}, 1000 * i + 1000);
+			if (i === elemsToShow.length - 1) {
+				setTimeout(() => {
+					this.updateUIScore();
+				}, 1000 * i + 1000);
+			}
+		}
+		this.board.append(result);
 	},
 
 	/**
@@ -198,7 +224,7 @@ const app = {
 			{ className: `main__entity ${name}` },
 			[
 				{
-					name: "player-choice",
+					name: "choice",
 					value: name.toUpperCase(),
 				},
 			],
@@ -210,10 +236,12 @@ const app = {
 			},
 		]);
 		container.appendChild(image);
-
-		// adds a listener to game icons
-		container.addEventListener("click", this.playHandler.bind(this));
 		return container;
+	},
+
+	addClickListener(element, listener) {
+		element.addEventListener("click", listener);
+		return element;
 	},
 
 	/**
@@ -223,24 +251,50 @@ const app = {
 	 */
 	createResultElement(resultObject) {
 		const { name, isWinner, value } = resultObject;
+		let container, text, resultText;
 		switch (name) {
 			case this.game.PLAYER:
-				return this.createElement("div", { textContent: name });
+				container = this.createElement("div", {
+					className: "result--player",
+				});
+				text = this.createElement("p", { textContent: "You picked" });
+				const player = this.createEntity(value.toLowerCase());
+				container.append(text, player);
+				return container;
 			case this.game.HOUSE:
-				return this.createElement("div", { textContent: name });
+				container = this.createElement("div", {
+					className: "result--house",
+				});
+				text = this.createElement("p", { textContent: "The house picked" });
+				const house = this.createEntity(value.toLowerCase());
+				container.append(text, house);
+				return container;
 			case "RESULT":
-				const container = this.createElement("div");
+				container = this.createElement("div", {
+					className: "result--text__container",
+				});
+
 				const replayBtn = this.createElement("button", {
 					type: "button",
-					textContent: "Replay",
+					textContent: "Play again",
+					className: "replay--btn",
 				});
+
 				replayBtn.addEventListener("click", this.newGame.bind(this));
-				let text;
-				text = this.createElement("div", { textContent: `${value} wins !` });
+
+				resultText = this.createElement("p", {
+					textContent: value === this.game.PLAYER ? "You win" : "You lose",
+					className: "result--text",
+				});
+
 				if (!value) {
-					text = this.createElement("div", { textContent: "DRAW" });
+					resultText = this.createElement("p", {
+						textContent: "DRAW",
+						className: "result--text",
+					});
 				}
-				container.append(text, replayBtn);
+
+				container.append(resultText, replayBtn);
 				return container;
 			default:
 				console.error("An error occured somewhere...");
