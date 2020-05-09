@@ -15,6 +15,7 @@ body {
   background: #1e3755;
   background: radial-gradient(ellipse at top, #1f3756 0%, #141539 100%);
   font-family: "Barlow Semi Condensed", sans-serif;
+  overflow: hidden;
 }
 
 .backdrop {
@@ -319,9 +320,9 @@ body {
   right: 50%;
   -webkit-transform: translate(50%);
           transform: translate(50%);
-  bottom: 4rem;
-  padding: 1rem;
-  min-width: 8rem;
+  bottom: 2rem;
+  padding: 0.5rem;
+  min-width: 6rem;
   color: white;
   border: 2px solid #5b6b84;
   text-transform: uppercase;
@@ -332,6 +333,8 @@ body {
 
 @media (min-width: 768px) {
   .rules {
+    min-width: 8rem;
+    padding: 1rem;
     right: 2rem;
     bottom: 2rem;
     -webkit-transform: none;
@@ -423,7 +426,7 @@ body {
       -ms-flex-flow: row wrap;
           flex-flow: row wrap;
   position: relative;
-  top: -5rem;
+  top: -2rem;
 }
 
 @media (min-width: 768px) {
@@ -572,8 +575,7 @@ body {
 
 @media (min-width: 768px) {
   .result--house p {
-    margin-top: 0;
-    margin-bottom: 4rem;
+    resulom: 4rem;
   }
 }
 
@@ -627,7 +629,7 @@ body {
 .result--text {
   font-weight: bold;
   text-transform: uppercase;
-  font-size: 2.5rem;
+  font-size: 2.5em;
   margin: 1rem 0;
   color: #fff;
 }
@@ -652,7 +654,8 @@ body {
       -ms-flex-order: 3;
           order: 3;
   position: relative;
-  top: -4rem;
+  top: -5rem;
+  font-size: 0.8rem;
 }
 
 @media (min-width: 768px) {
@@ -661,6 +664,7 @@ body {
         -ms-flex-order: 2;
             order: 2;
     position: static;
+    font-size: 1rem;
   }
 }
 
@@ -668,9 +672,9 @@ body {
   width: 100%;
   border: none;
   border-radius: 5px;
-  padding: 1rem 2rem;
+  padding: 1em 2em;
   text-transform: uppercase;
-  font-size: 1rem;
+  font-size: 1em;
   font-weight: bold;
   -webkit-transition: all 200ms ease-in-out;
   transition: all 200ms ease-in-out;
